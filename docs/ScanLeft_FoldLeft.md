@@ -20,10 +20,12 @@ scanLeft는 중간결과를 저장하고, List로 리턴함
     // res: String = ABC
 ```
 #### aggregate() RDD function
-Compared to reduce() & fold(), the aggregate() function has the advantage, it can return different Type vis-a-vis the RDD Element Type(ie Input Element type)
+Compared to reduce() & fold(), the aggregate() function has the advantage, it can return different Type vis-a-vis the RDD Element Type, ie Input Element type
+
     ```scala
     def aggregate[U](zeroValue: U)(seqOp: (U, T) ⇒ U, combOp: (U, U) ⇒ U)(implicit arg0: ClassTag[U]): U
     ```
+
 * Aggregate the elements of each partition, and then the results for all the partitions, using given combine functions and a neutral "zero value".
 * initial value to be used for both seqOp and combOp. zero 값은 파티션 마다 Merge할 때 마다 더해짐
 * seqOp is used in every partition and combOp is used to combine results from every partition
